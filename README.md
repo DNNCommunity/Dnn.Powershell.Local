@@ -22,11 +22,12 @@ The included commands will then be available to use in Powershell:
 - Add-Roles
 - Add-User
 - Add-Users
-- Get-RandomCharacter
-- Get-RandomNumber
-- Get-RandomString
 
-(todo: further documentation on these commands)
+For help on commands use Get-Help like so:
+
+``` ps
+get-help use-dnn -full
+```
 
 ## Environment
 

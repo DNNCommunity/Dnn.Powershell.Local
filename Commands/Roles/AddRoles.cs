@@ -3,15 +3,29 @@ using System.Management.Automation;
 
 namespace Dnn.Powershell.Local.Commands.Roles
 {
+    /// <summary>
+    /// <para type="synopsis">Add a set of roles to a portal</para>
+    /// <para type="description">This will use randomly generated names for the roles</para>
+    /// </summary>
     [Cmdlet(VerbsCommon.Add, Nouns.Roles)]
     public class AddRoles : DNNCmdLet
     {
+        /// <summary>
+        /// <para type="description">Portal ID for the portal to add the roles to</para>
+        /// </summary>
         [Parameter(Position = 0, Mandatory = true)]
         public int PortalId { get; set; }
 
+        /// <summary>
+        /// <para type="description">The number of roles to add</para>
+        /// </summary>
         [Parameter(Position = 1, Mandatory = true)]
         public int NrRoles { get; set; }
 
+        /// <summary>
+        /// <para type="description">If specified the roles will be added to this role group.
+        /// If not then they will be added as generic portal roles.</para>
+        /// </summary>
         [Parameter()]
         public string RoleGroupName { get; set; }
 

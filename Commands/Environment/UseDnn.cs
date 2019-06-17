@@ -5,9 +5,20 @@ using System.Xml;
 
 namespace Dnn.Powershell.Local.Commands.Environment
 {
+
+    /// <summary>
+    /// <para type="synopsis">This sets the current environment DNN installation</para>
+    /// <para type="description">The environment only has one DNN installation active at a time.
+    /// The web.config is loaded and analyzed to get the connection string so future actions
+    /// can be run against the database.</para>
+    /// </summary>
     [Cmdlet(VerbsOther.Use, Nouns.Dnn)]
     public class UseDnn : DNNCmdLet
     {
+        /// <summary>
+        /// <para type="description">Path to the DNN installation. Note this needs to be 
+        /// the root of the DNN installation where the web.config is found.</para>
+        /// </summary>
         [Parameter(Position = 0, Mandatory = true)]
         public string Sitepath { get; set; }
 
