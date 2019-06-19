@@ -35,7 +35,7 @@ namespace Dnn.Powershell.Local
 
         public SqlCommand GetCommand()
         {
-            SqlCommand cmd = new SqlCommand();
+            var cmd = new SqlCommand();
             cmd.Connection = Connection;
             cmd.CommandTimeout = 10;
             return cmd;
@@ -43,12 +43,12 @@ namespace Dnn.Powershell.Local
 
         public SqlCommand GetCommand(string commandText)
         {
-            SqlCommand cmd = GetCommand();
-            cmd.CommandText = ReplaceSqlPlaceholders(ref commandText);
+            var cmd = GetCommand();
+            cmd.CommandText = ReplaceSqlPlaceholders(commandText);
             return cmd;
         }
 
-        public string ReplaceSqlPlaceholders(ref string sql)
+        public string ReplaceSqlPlaceholders(string sql)
         {
             sql = sql.Replace("{DBName}", DatabaseName);
             sql = sql.Replace("{databaseOwner}", DatabaseOwner);

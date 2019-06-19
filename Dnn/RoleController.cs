@@ -24,7 +24,7 @@ namespace Dnn.Powershell.Local.Dnn
             int RoleGroupID = -1;
             if (!string.IsNullOrEmpty(roleGroupName))
             {
-                var cmd = context.GetCommand(Sql.SqlScripts.GetScript("Sql.Scripts.SetRoleGroup", context.DNNVersion))
+                var cmd = context.GetCommand(Sql.SqlScripts.GetScript("SetRoleGroup", context.DNNVersion))
                     .AddParameter("PortalID", portalId)
                     .AddParameter("RoleGroupName", roleGroupName);
                 RoleGroupID = Convert.ToInt32(cmd.ExecuteScalar());

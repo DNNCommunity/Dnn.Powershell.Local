@@ -53,7 +53,7 @@ namespace Dnn.Powershell.Local.Dnn
 
         public static void AddUserToRole(DNNContext context, int portalId, int userId, string roleName)
         {
-            var cmd = context.GetCommand(Sql.SqlScripts.GetScript("Sql.Scripts.AddUserToRole", context.DNNVersion))
+            var cmd = context.GetCommand(Sql.SqlScripts.GetScript("AddUserToRole", context.DNNVersion))
                 .AddParameter("PortalID", portalId)
                 .AddParameter("UserID", userId)
                 .AddParameter("Rolename", roleName);

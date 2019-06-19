@@ -9,20 +9,19 @@ namespace Dnn.Powershell.Local.Sql
         {
             switch (scriptName.ToLower())
             {
-                case "addusertorole":
-                    {
-                        return Globals.GetResource("AddUserToRole.sql");
-                    }
-
                 case "setrolegroup":
                     {
                         if (version < new Version("05.00.00"))
-                            return Globals.GetResource("SetRoleGroup.sql");
+                            return GetScript("SetRoleGroup");
                         else
-                            return Globals.GetResource("SetRoleGroup_050000.sql");
+                            return GetScript("SetRoleGroup_050000");
                     }
             }
-            return "";
+            return GetScript(scriptName);
+        }
+        public static string GetScript(string scriptName)
+        {
+            return Globals.GetResource(string.Format("Sql.Scripts.{0}.sql", scriptName));
         }
     }
 }
