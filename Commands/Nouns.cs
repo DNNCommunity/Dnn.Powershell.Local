@@ -17,6 +17,7 @@
         public const string Site = "Site";
         public const string Sites = "Sites";
         public const string Smtp = "Smtp";
+        public const string Text = "Text";
         public const string Url = "Url";
         public const string WebConfig = "WebConfig";
         public const string DnnZipFile = "DnnZipFile";

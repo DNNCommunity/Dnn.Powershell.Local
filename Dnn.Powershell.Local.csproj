@@ -68,6 +68,7 @@
     <Compile Include="Commands\Roles\AddRoles.cs" />
     <Compile Include="Commands\Users\AddUser.cs" />
     <Compile Include="Commands\Users\AddUsers.cs" />
+    <Compile Include="Commands\Utilities\SaveText.cs" />
     <Compile Include="Common\Globals.cs" />
     <Compile Include="DNNCmdLet.cs" />
     <Compile Include="DNNContext.cs" />

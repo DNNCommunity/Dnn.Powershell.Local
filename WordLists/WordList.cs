@@ -28,7 +28,22 @@ namespace Dnn.Powershell.Local.WordLists
         public static string GetRolename()
         {
             EnsureWordlistsLoaded();
-            return glbRolenames[rn.Next(glbRolenames.Count)].Trim(new[] { '\r', '\n' }).Trim().Substring(0, 50);
+            return MakePhrase(rn.Next(1, 3), true);
+        }
+
+        public static string MakePhrase(int nrWords, bool capitalize)
+        {
+            var res = new List<string>();
+            for (var i = 0; i < nrWords; i++)
+            {
+                var newWord = glbDictionary[rn.Next(glbDictionary.Count)].Trim(new[] { '\r', '\n' }).Trim();
+                if (capitalize || i == 0)
+                {
+                    newWord = newWord.Substring(0, 1).ToUpper() + newWord.Substring(1);
+                }
+                res.Add(newWord);
+            }
+            return string.Join(" ", res);
         }
 
         private static void EnsureWordlistsLoaded()

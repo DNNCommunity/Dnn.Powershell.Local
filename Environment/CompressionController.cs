@@ -24,7 +24,10 @@ namespace Dnn.Powershell.Local.Environment
                         }
                         if (!Directory.Exists(Path.GetDirectoryName(strFileName)))
                             Directory.CreateDirectory(Path.GetDirectoryName(strFileName));
-                        objZipEntry.ExtractToFile(strFileName);
+                        if (!string.IsNullOrEmpty(objZipEntry.Name))
+                        {
+                            objZipEntry.ExtractToFile(strFileName);
+                        }
                     }
                 }
             }
