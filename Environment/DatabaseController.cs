@@ -22,6 +22,16 @@ namespace Dnn.Powershell.Local.Environment
             RunScript(connectionString, script);
         }
 
+        public static void RestoreDatabase(string connectionString, string bakFile, string dbPath, string dbName, string dbLogin)
+        {
+            var script = Sql.SqlScripts.GetScript("DbRestore");
+            script = script.Replace("{DBName}", dbName);
+            script = script.Replace("{DBLogin}", dbLogin);
+            script = script.Replace("{DBPath}", dbPath);
+            script = script.Replace("{BakFile}", bakFile);
+            RunScript(connectionString, script);
+        }
+
         public static void RunScript(string connectionString, string script)
         {
             using (var connection = new SqlConnection(connectionString))

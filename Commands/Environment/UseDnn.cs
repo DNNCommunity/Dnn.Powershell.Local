@@ -42,7 +42,7 @@ namespace Dnn.Powershell.Local.Commands.Environment
             if (string.IsNullOrEmpty(Context.DatabaseName))
                 Context.DatabaseName = Regex.Match(Context.ConnectionString, "(?i);Initial Catalog=([^;]+);(?-i)").Groups[1].Value;
 
-            object r = Context.ExecuteScalarSQL("SELECT MAX(Version) FROM (SELECT REPLICATE('0', CASE WHEN Major>9 THEN 0 ELSE 1 END)+CAST(Major AS VARCHAR(2))+'.'+REPLICATE('0', CASE WHEN Minor>9 THEN 0 ELSE 1 END)+CAST(Minor AS VARCHAR(2))+'.'+REPLICATE('0', CASE WHEN Build>9 THEN 0 ELSE 1 END)+CAST(Build AS VARCHAR(2)) AS Version FROM {databaseOwner}{objectQualifier}Version WHERE ([Name] IS NULL) OR ([Name]='DNNCORP.CE')) t");
+            object r = Context.ExecuteScalar("SELECT MAX(Version) FROM (SELECT REPLICATE('0', CASE WHEN Major>9 THEN 0 ELSE 1 END)+CAST(Major AS VARCHAR(2))+'.'+REPLICATE('0', CASE WHEN Minor>9 THEN 0 ELSE 1 END)+CAST(Minor AS VARCHAR(2))+'.'+REPLICATE('0', CASE WHEN Build>9 THEN 0 ELSE 1 END)+CAST(Build AS VARCHAR(2)) AS Version FROM {databaseOwner}{objectQualifier}Version WHERE ([Name] IS NULL) OR ([Name]='DNNCORP.CE')) t");
             if (r != null)
                 Context.DNNVersion = new System.Version(System.Convert.ToString(r));
 

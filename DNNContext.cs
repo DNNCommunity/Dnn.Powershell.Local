@@ -56,12 +56,20 @@ namespace Dnn.Powershell.Local
             return sql;
         }
 
-        public object ExecuteScalarSQL(string sql)
+        public object ExecuteScalar(string sql)
         {
             if (Connection == null)
                 return null;
             SqlCommand cmd = GetCommand(sql);
             return cmd.ExecuteScalar();
+        }
+
+        public void ExecuteNonQuery(string sql)
+        {
+            if (Connection == null)
+                return;
+            SqlCommand cmd = GetCommand(sql);
+            cmd.ExecuteNonQuery();
         }
     }
 }
