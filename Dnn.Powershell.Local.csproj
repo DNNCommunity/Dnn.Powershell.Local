@@ -54,11 +54,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands\Environment\InstallDnn.cs" />
     <Compile Include="Commands\Environment\SetWebconfig.cs" />
     <Compile Include="Commands\Environment\RemoveDatabase.cs" />
-    <Compile Include="Commands\Environment\AddIisFolder.cs" />
     <Compile Include="Commands\Environment\AddDatabase.cs" />
-    <Compile Include="Commands\Environment\FindDnnZipFile.cs" />
     <Compile Include="Commands\Environment\ExpandZipFile.cs" />
     <Compile Include="Commands\Environment\UseDnn.cs" />
     <Compile Include="Commands\Roles\AddRole.cs" />
