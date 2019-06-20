@@ -13,7 +13,7 @@ namespace Dnn.Powershell.Local.Commands.Environment
         protected override void ProcessRecord()
         {
             var script = Sql.SqlScripts.GetScript("ClearSmtp");
-            Context.ExecuteNonQuery(script);
+            Context.RunScript(script);
         }
     }
 }

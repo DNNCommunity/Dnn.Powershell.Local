@@ -43,8 +43,11 @@ namespace Dnn.Powershell.Local.Environment
                 cmd.CommandTimeout = 10;
                 foreach (var segment in Regex.Split(script, @"GO\r\n"))
                 {
-                    cmd.CommandText = segment;
-                    cmd.ExecuteNonQuery();
+                    if (segment.Trim() != "")
+                    {
+                        cmd.CommandText = segment;
+                        cmd.ExecuteNonQuery();
+                    }
                 }
                 cmd.Dispose();
             }

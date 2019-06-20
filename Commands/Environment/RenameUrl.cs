@@ -28,7 +28,7 @@ namespace Dnn.Powershell.Local.Commands.Environment
             var script = Sql.SqlScripts.GetScript("RenameUrl");
             script = script.Replace("{OldUrl}", OldUrl);
             script = script.Replace("{NewUrl}", NewUrl);
-            Context.ExecuteNonQuery(script);
+            Context.RunScript(script);
         }
     }
 }

@@ -47,13 +47,16 @@ RESTORE FILELISTONLY
 SET @LogicalNameData=(SELECT LogicalName FROM @Table WHERE Type='D');
 SET @LogicalNameLog=(SELECT LogicalName FROM @Table WHERE Type='L');
 
-RESTORE DATABASE [www_formamed_dev] 
+RESTORE DATABASE [{DBName}] 
  FROM  DISK = N'{BakFile}'
  WITH  FILE = 1,  
  MOVE @LogicalNameData TO N'{DBPath}\{DBName}.mdf',  
  MOVE @LogicalNameLog TO N'{DBPath}\{DBName}_log.ldf',  
  NOUNLOAD,  REPLACE,  STATS = 10
 
+GO
+
+USE [{DBName}]
 GO
 
 IF NOT EXISTS(SELECT * FROM sys.sysusers su join sys.syslogins sl on sl.sid = su.sid where sl.name = '{DBLogin}')

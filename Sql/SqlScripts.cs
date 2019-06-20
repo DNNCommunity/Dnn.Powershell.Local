@@ -1,5 +1,6 @@
 ﻿using Dnn.Powershell.Local.Common;
 using System;
+using System.Text.RegularExpressions;
 
 namespace Dnn.Powershell.Local.Sql
 {
@@ -21,7 +22,7 @@ namespace Dnn.Powershell.Local.Sql
         }
         public static string GetScript(string scriptName)
         {
-            return Globals.GetResource(string.Format("Sql.Scripts.{0}.sql", scriptName));
+            return Regex.Replace(Globals.GetResource(string.Format("Sql.Scripts.{0}.sql", scriptName)), "\r\n", System.Environment.NewLine);
         }
     }
 }

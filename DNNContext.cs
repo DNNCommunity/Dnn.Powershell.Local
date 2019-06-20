@@ -2,6 +2,7 @@
 using System.Collections;
 using System;
 using System.Data.SqlClient;
+using System.Text.RegularExpressions;
 
 namespace Dnn.Powershell.Local
 {
@@ -64,12 +65,18 @@ namespace Dnn.Powershell.Local
             return cmd.ExecuteScalar();
         }
 
-        public void ExecuteNonQuery(string sql)
+        public void RunScript(string sql)
         {
             if (Connection == null)
                 return;
-            SqlCommand cmd = GetCommand(sql);
-            cmd.ExecuteNonQuery();
+            foreach (var segment in Regex.Split(sql, @"GO\r\n"))
+            {
+                if (segment.Trim() != "")
+                {
+                    var cmd = GetCommand(segment);
+                    cmd.ExecuteNonQuery();
+                }
+            }
         }
     }
 }
