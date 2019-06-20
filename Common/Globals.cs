@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Data;
+using System.IO;
 using System.Text;
 
 namespace Dnn.Powershell.Local.Common
@@ -87,6 +88,16 @@ namespace Dnn.Powershell.Local.Common
             return res;
         }
 
+        public static string ReadFile(string filePath)
+        {
+            if (!File.Exists(filePath)) return "";
+            var res = "";
+            using (var sr = new StreamReader(filePath))
+            {
+                res = sr.ReadToEnd();
+            }
+            return res;
+        }
 
     }
 }

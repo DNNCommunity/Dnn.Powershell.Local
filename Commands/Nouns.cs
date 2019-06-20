@@ -4,6 +4,8 @@
     {
         public const string Database = "Database";
         public const string Dnn = "Dnn";
+        public const string HostToHostFile = "HostToHostFile";
+        public const string HostFromHostFile = "HostFromHostFile";
         public const string IisFolder = "IisFolder";
         public const string IisSite = "IisSite";
         public const string Passwords = "Passwords";
